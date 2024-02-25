@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.QuizMaster" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="android:background">@color/blue</item>
+        <item name="android:textColor">@color/light_blue</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/opensans_medium</item>
+
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.QuizMaster" parent="Base.Theme.QuizMaster" />
+</resources>

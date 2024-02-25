@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="project.gb.quizmaster.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_welcomeScreenFragment"
+            app:destination="@id/welcomeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultsScreenFragment"
+        android:name="project.gb.quizmaster.ui.main.ResultsScreenFragment"
+        android:label="fragment_results_screen"
+        tools:layout="@layout/fragment_results_screen" />
+    <fragment
+        android:id="@+id/surveyScreenFragment"
+        android:name="project.gb.quizmaster.ui.main.SurveyScreenFragment"
+        android:label="fragment_survey_screen"
+        tools:layout="@layout/fragment_survey_screen" >
+        <action
+            android:id="@+id/action_surveyScreenFragment_to_resultsScreenFragment"
+            app:destination="@id/resultsScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeScreenFragment"
+        android:name="project.gb.quizmaster.ui.main.WelcomeScreenFragment"
+        android:label="fragment_welcome_screen"
+        tools:layout="@layout/fragment_welcome_screen" >
+        <action
+            android:id="@+id/action_welcomeScreenFragment_to_surveyScreenFragment"
+            app:destination="@id/surveyScreenFragment" />
+    </fragment>
+</navigation>
