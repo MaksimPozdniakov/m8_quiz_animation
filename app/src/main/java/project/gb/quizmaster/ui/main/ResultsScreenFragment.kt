@@ -36,8 +36,17 @@ class ResultsScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // получаем ответы и выводи в TextView
+        val result: String? = arguments?.getString(ARG_PARAM1)
+        if (!result.isNullOrEmpty()) {
+            binding.textViewResult.text = result
+        } else {
+            binding.textViewResult.text = "Ничего нет!"
+        }
+
+
         binding.startOver.setOnClickListener {
-            findNavController().navigate(R.id.action_surveyScreenFragment_to_resultsScreenFragment)
+            findNavController().navigate(R.id.action_resultsScreenFragment_to_welcomeScreenFragment)
         }
     }
 
