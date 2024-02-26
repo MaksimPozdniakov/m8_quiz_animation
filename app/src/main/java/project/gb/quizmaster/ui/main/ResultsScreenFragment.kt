@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import project.gb.quizmaster.R
 import project.gb.quizmaster.databinding.FragmentResultsScreenBinding
 
@@ -29,8 +30,20 @@ class ResultsScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentResultsScreenBinding.inflate(inflater)
+        _binding = FragmentResultsScreenBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.startOver.setOnClickListener {
+            findNavController().navigate(R.id.action_surveyScreenFragment_to_resultsScreenFragment)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

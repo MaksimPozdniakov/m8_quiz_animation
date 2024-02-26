@@ -7,6 +7,7 @@
         погрузимся в волшебство Quiz и вместе сделаем это приключение незабываемым!</string>
     <string name="cont">Продолжить</string>
     <string name="start">Начать!</string>
-    <string name="hello_blank_fragment3">Фрагмент с опросом.</string>
-    <string name="hello_blank_fragment4">Фрагмент с результатом.</string>
+    <string name="back">Назад</string>
+    <string name="send">Отправить</string>
+    <string name="start_over">Начать заново</string>
 </resources>
