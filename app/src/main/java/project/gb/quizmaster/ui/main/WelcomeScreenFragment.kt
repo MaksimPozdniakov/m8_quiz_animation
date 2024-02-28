@@ -5,26 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import project.gb.quizmaster.R
 import project.gb.quizmaster.databinding.FragmentWelcomeScreenBinding
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class WelcomeScreenFragment : Fragment() {
     private var _binding: FragmentWelcomeScreenBinding? = null
     private val binding get()  = _binding!!
     private var param1: String? = null
     private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +26,11 @@ class WelcomeScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Добавляем обратный вызов в обработчик нажатия кнопки "Back"
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
+
+
         binding.startButton.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeScreenFragment_to_surveyScreenFragment)
         }
@@ -46,14 +41,16 @@ class WelcomeScreenFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WelcomeScreenFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            // Перенаправляем на главный экран при нажатии кнопки "Back"
+            navigateToMainFragment()
+        }
     }
+
+    private fun navigateToMainFragment() {
+        // Переходим на главный экран без добавления текущего фрагмента в стек навигации
+        findNavController().popBackStack(R.id.mainFragment, false)
+    }
+
 }

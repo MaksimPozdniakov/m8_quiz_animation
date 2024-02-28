@@ -55,7 +55,7 @@ class SurveyScreenFragment : Fragment() {
         recyclerView.adapter = QuestionsAdapter(questions)
 
         binding.backButton.setOnClickListener {
-            findNavController().navigate(R.id.action_surveyScreenFragment_to_mainFragment)
+            findNavController().navigate(R.id.action_surveyScreenFragment_to_welcomeScreenFragment)
         }
 
         binding.sendButton.setOnClickListener {
