@@ -71,7 +71,10 @@ class SurveyScreenFragment : Fragment() {
             if (checkAnswers()) {
                 // создаем Bundle и передаем ответы
                 val bundle = Bundle().apply {
-                    putString("param1", choiceUser.toString())
+                    val stringResult = "Ваши ответы: " + choiceUser.toString()
+                        .replace("[", "")
+                        .replace("]", "")
+                    putString("param1", stringResult)
                 }
 
                 findNavController().navigate(R.id.action_surveyScreenFragment_to_resultsScreenFragment, bundle)

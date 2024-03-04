@@ -16,16 +16,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_view"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            app:lottie_rawRes="@raw/animation_for_results_screen"
+            app:lottie_autoPlay="true"
+            android:layout_weight="0.4"/>
+
         <TextView
             android:id="@+id/textViewResult"
             android:layout_width="match_parent"
+            android:gravity="center"
+            android:textSize="15sp"
             android:layout_height="0dp"
-            android:layout_weight="0.6"/>
+            android:layout_weight="0.1"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.5"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatButton
