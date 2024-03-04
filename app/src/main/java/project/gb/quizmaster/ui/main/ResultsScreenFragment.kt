@@ -1,10 +1,13 @@
 package project.gb.quizmaster.ui.main
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import androidx.navigation.fragment.findNavController
 import project.gb.quizmaster.R
 import project.gb.quizmaster.databinding.FragmentResultsScreenBinding
@@ -44,6 +47,16 @@ class ResultsScreenFragment : Fragment() {
             binding.textViewResult.text = "Ничего нет!"
         }
 
+        // Добавляем анимацию к кнопке
+        ObjectAnimator.ofFloat(
+            binding.startOver,
+            View.ROTATION,
+            0f,360f
+        ).apply {
+            duration = 1500
+            interpolator = AccelerateDecelerateInterpolator()
+            start()
+        }
 
         binding.startOver.setOnClickListener {
             findNavController().navigate(R.id.action_resultsScreenFragment_to_welcomeScreenFragment)

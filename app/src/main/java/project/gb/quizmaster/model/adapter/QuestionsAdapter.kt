@@ -1,14 +1,18 @@
 package project.gb.quizmaster.model.adapter
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import project.gb.quizmaster.R
 import project.gb.quizmaster.quiz.Question
+
 
 class QuestionsAdapter(private val questions: List<Question>) :
     RecyclerView.Adapter<QuestionsAdapter.QuestionViewHolder>() {
@@ -20,8 +24,13 @@ class QuestionsAdapter(private val questions: List<Question>) :
     }
 
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
+
         val question = questions[position]
         holder.questionTextView.text = question.question
+
+        // Применяем анимацию к каждому элементу списка
+        val animation: Animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_animation)
+        holder.itemView.startAnimation(animation)
 
         // Очищаем группу RadioButton перед добавлением новых кнопок
         holder.answersRadioGroup.removeAllViews()

@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -54,6 +57,12 @@ class SurveyScreenFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = QuestionsAdapter(questions)
 
+        // Добавляем анимацию к кнопкам
+        val slideFromLeft = AnimationUtils.loadAnimation(requireActivity(), R.anim.slide_from_left)
+        val slideFromRight = AnimationUtils.loadAnimation(requireActivity(), R.anim.slide_from_right)
+        binding.backButton.startAnimation(slideFromLeft)
+        binding.sendButton.startAnimation(slideFromRight)
+
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_surveyScreenFragment_to_welcomeScreenFragment)
         }
@@ -68,6 +77,8 @@ class SurveyScreenFragment : Fragment() {
                 findNavController().navigate(R.id.action_surveyScreenFragment_to_resultsScreenFragment, bundle)
             }
         }
+
+
     }
 
     /**
