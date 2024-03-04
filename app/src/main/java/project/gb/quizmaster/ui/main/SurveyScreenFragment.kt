@@ -38,7 +38,7 @@ class SurveyScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSurveyScreenBinding.inflate(inflater, container, false)
         return binding.root
     }

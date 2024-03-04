@@ -13,13 +13,11 @@ import project.gb.quizmaster.databinding.FragmentWelcomeScreenBinding
 class WelcomeScreenFragment : Fragment() {
     private var _binding: FragmentWelcomeScreenBinding? = null
     private val binding get()  = _binding!!
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentWelcomeScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
